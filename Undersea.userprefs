@@ -1,0 +1,22 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" ctype="Workspace" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Undersea/Main.cs" ctype="Workbench">
+    <Files>
+      <File FileName="Undersea/Main.cs" Line="1" Column="1" />
+      <File FileName="Undersea/MainWindow.cs" Line="21" Column="48" />
+      <File FileName="Undersea/Grid.cs" Line="54" Column="23" />
+      <File FileName="Undersea/Tile.cs" Line="63" Column="39" />
+      <File FileName="Undersea/GameObject.cs" Line="5" Column="4" />
+      <File FileName="Undersea/TileRock.cs" Line="13" Column="92" />
+      <File FileName="Undersea/Renderer.cs" Line="45" Column="14" />
+      <File FileName="Undersea/Renderer2D.cs" Line="16" Column="38" />
+      <File FileName="Undersea/GridCoord.cs" Line="30" Column="19" />
+      <File FileName="Undersea/WindowCoord.cs" Line="27" Column="19" />
+      <File FileName="Assembly Browser" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches ctype="PinnedWatchStore" />
+</Properties>

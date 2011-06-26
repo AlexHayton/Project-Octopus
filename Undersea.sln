@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Undersea", "Undersea\Undersea.csproj", "{E8F92922-933D-40B4-8C84-8C615E75FCD2}"
+EndProject
+Project("{9344bdbb-3e7f-41fc-a0dd-8665d75ee146}") = "Packages", "Packages.mdproj", "{CC4D4939-A349-43A8-AC51-14C5F76A1AD4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC4D4939-A349-43A8-AC51-14C5F76A1AD4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CC4D4939-A349-43A8-AC51-14C5F76A1AD4}.Release|x86.ActiveCfg = Release|Any CPU
+		{E8F92922-933D-40B4-8C84-8C615E75FCD2}.Debug|x86.ActiveCfg = Debug|x86
+		{E8F92922-933D-40B4-8C84-8C615E75FCD2}.Debug|x86.Build.0 = Debug|x86
+		{E8F92922-933D-40B4-8C84-8C615E75FCD2}.Release|x86.ActiveCfg = Release|x86
+		{E8F92922-933D-40B4-8C84-8C615E75FCD2}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Undersea\Undersea.csproj
+	EndGlobalSection
+EndGlobal
