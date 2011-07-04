@@ -3,7 +3,10 @@ namespace Undersea
 {
 	public interface GameObject
 	{	
-		void Draw();
+		float GetHealth();
+		float GetMaxHealth();
+		bool CanTakeDamage();
+		void TakeDamage(float damage, DamageType type);
 		void Process(int milliseconds);
 	}
 }

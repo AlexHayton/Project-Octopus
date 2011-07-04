@@ -5,11 +5,16 @@ using System.Reflection;
 
 namespace Undersea
 {
-	public abstract class Tile : GameObject
+	public abstract class Tile : RenderObject, GameObject, GridObject
 	{	
-		private int m_gridPosX = 0;
-		private int m_gridPosY = 0;
-		private List<Tile> m_connectedTiles;
+		protected int m_gridPosX = 0;
+		protected int m_gridPosY = 0;
+		protected List<Tile> m_connectedTiles = new List<Tile>();
+		protected bool m_passable = false;
+		protected bool m_wet = false;
+		protected float m_currentHealth = 0;
+		protected int m_maxHealth = 0;
+		protected TileType m_tileType = TileType.Rock;
 		
 		public enum TileType
 		{
@@ -38,16 +43,40 @@ namespace Undersea
 			}
 		}
 
-		public int GridPosX {
+		public GridCoord GetGridPosition()
+		{
+			return new GridCoord(m_gridPosX, m_gridPosY);
+		}
+
+		public float GetHealth() {
+			return this.m_currentHealth;
+		}
+		
+		public float GetMaxHealth() {
+			return this.m_maxHealth;
+		}
+
+		public bool Passable {
 			get {
-				return this.m_gridPosX;
+				return this.m_passable;
 			}
 		}
 
-		public int GridPosY {
+		public bool Wet {
 			get {
-				return this.m_gridPosY;
+				return this.m_wet;
 			}
+		}
+		
+		public bool CanTakeDamage()
+		{
+			return (this.m_currentHealth > 0);
+		}	 
+		
+		public virtual void TakeDamage(float damage, DamageType type)
+		{
+			// Tiles take no damage from anything, by default.
+			// Please override!
 		}
 
 		public abstract void Draw();

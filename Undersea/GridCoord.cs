@@ -3,8 +3,8 @@ namespace Undersea
 {
 	public class GridCoord
 	{
-		public float m_X;
-		public float m_Y;
+		private float m_X;
+		private float m_Y;
 		
 		public float X {
 			get {

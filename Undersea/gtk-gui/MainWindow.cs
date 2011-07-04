@@ -3,8 +3,6 @@
 
 public partial class MainWindow
 {
-	private global::Gtk.DrawingArea drawingarea1;
-
 	protected virtual void Build ()
 	{
 		global::Stetic.Gui.Initialize (this);
@@ -12,10 +10,6 @@ public partial class MainWindow
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString ("MainWindow");
 		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
-		// Container child MainWindow.Gtk.Container+ContainerChild
-		this.drawingarea1 = new global::Gtk.DrawingArea ();
-		this.drawingarea1.Name = "drawingarea1";
-		this.Add (this.drawingarea1);
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();
 		}

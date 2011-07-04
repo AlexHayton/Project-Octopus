@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Gtk;
 namespace Undersea
 {
@@ -12,6 +13,7 @@ namespace Undersea
 		protected int m_windowSizeY;
 		protected int m_gridSizeX;
 		protected int m_gridSizeY;
+		protected List<RenderObject> m_renderObjects = new List<RenderObject>();
 		
 		public enum Axis
 		{
@@ -54,8 +56,27 @@ namespace Undersea
 			return windowCoord * (windowSize / gridSize);
 		}
 		
+		public void AddRenderObject(RenderObject newobject)
+		{
+			if (m_renderObjects.Contains(newobject))
+			{
+			    // Do nothing
+			}
+			else
+			{
+			    m_renderObjects.Add(newobject);
+			}
+		}
+		
+		public void RemoveRenderObject(RenderObject oldobject)
+		{
+			m_renderObjects.Remove(oldobject);
+		}
+		
 		public abstract void DrawLine(GridCoord pointStart, GridCoord pointEnd);
 		public abstract void DrawText(GridCoord point, int size, string text);			
+		public abstract void DrawSplash();
+		public abstract void ClearSplash();
 	}
 }
 
