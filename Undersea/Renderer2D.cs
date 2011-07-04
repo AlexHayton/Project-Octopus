@@ -5,10 +5,35 @@ namespace Undersea
 	public class Renderer2D : Renderer
 	{
 		private IntPtr m_surface;
+		private string m_fontdirectory;
+		private string m_mainfontname;
+		private IntPtr m_mainfont;
 		
 		public Renderer2D (IntPtr surface)
 		{
 			m_surface = surface;
+			
+			SdlTtf.TTF_Init();
+			
+			// Some bits here are OS-dependent.
+			// TODO: Multi-platform fonts.
+			/*if (os.Platform.ToString().ToUpper().Contains("WINDOWS"))
+			{
+				m_fontdirectory = @"C:\Windows\Fonts";
+				m_textfont = "";
+			}
+			else if (os.Platform.ToString().ToUpper().Contains("APPLE"))
+			{
+				m_fontdirectory = "/var/fonts";
+				m_textfont = "";
+			}
+			else
+			{*/
+				m_fontdirectory = "/usr/share/fonts/truetype/";
+				m_mainfontname = "freefont/FreeSans.ttf";
+			/*}*/
+			
+			m_mainfont = SdlTtf.TTF_OpenFont(m_fontdirectory + m_mainfontname, 12);
 		}
 		
 		public bool IsVisible(GridCoord coord)
@@ -28,11 +53,14 @@ namespace Undersea
 		
 		public override void DrawLine(GridCoord pointStart, GridCoord pointEnd)
 		{
-			SdlGfx.aalineColor(m_surface, pointStart.X, pointStart.Y, pointEnd.X, pointEnd.Y);
+			SdlGfx.aalineColor(m_surface, (short)pointStart.X, (short)pointStart.Y, (short)pointEnd.X, (short)pointEnd.Y, 0);
 		}
 		
-		public override void DrawText(GridCoord point, int size, string text)
+		public override void DrawText(GridCoord point, int size, string text, System.Drawing.Color colour)
 		{
+			// Convert the colour
+			Sdl.SDL_Color sdlcolour = new Sdl.SDL_Color(colour.R, colour.G, colour.B, colour.A);
+			SdlTtf.TTF_RenderUNICODE_Blended(m_mainfont, text, sdlcolour);
 		}
 		
 		public override void DrawSplash()

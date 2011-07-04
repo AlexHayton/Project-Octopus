@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Gtk;
+using Undersea;
 using Tao.Sdl;
 
 public partial class MainWindow : Gtk.Window
@@ -9,6 +10,8 @@ public partial class MainWindow : Gtk.Window
 	{
 		Build ();
 		InitSDL();
+		InitGame();
+		MainLoop();
 	}
 	
 	public static Undersea.Renderer GetRenderer()
@@ -25,7 +28,19 @@ public partial class MainWindow : Gtk.Window
 		Sdl.SDL_SetVideoMode(640, 480, 16, Sdl.SDL_DOUBLEBUF|Sdl.SDL_ANYFORMAT);
 		Sdl.SDL_WM_SetCaption("Octopus Castle View", "");
 		
-		s_renderer = new Undersea.Renderer2D(Sdl.SDL_GetVideoSurface());
+		s_renderer = new Renderer2D(Sdl.SDL_GetVideoSurface());
+	}
+	
+	private void InitGame()
+	{
+		GameRules rules = new GameRulesStandard(100, 100);
+		GameRules.StartNewGame(rules);
+	}
+	
+	private void MainLoop()
+	{
+		GameRules.GetGameRules().Process();
+		GetRenderer().Render();
 	}
 
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
@@ -34,5 +49,7 @@ public partial class MainWindow : Gtk.Window
 		Application.Quit ();
 		a.RetVal = true;
 	}
+	
+	
 }
 

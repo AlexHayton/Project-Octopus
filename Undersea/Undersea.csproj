@@ -104,9 +104,14 @@
     <Compile Include="GameRules.cs" />
     <Compile Include="DamageType.cs" />
     <Compile Include="RenderObject.cs" />
+    <Compile Include="GameRulesStandard.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.desktop" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Actors\" />
+    <Folder Include="Actors\" />
+  </ItemGroup>
 </Project>

@@ -73,8 +73,16 @@ namespace Undersea
 			m_renderObjects.Remove(oldobject);
 		}
 		
+		public void Render()
+		{
+			foreach (RenderObject target in m_renderObjects)
+			{
+				target.Draw();
+			}
+		}
+		
 		public abstract void DrawLine(GridCoord pointStart, GridCoord pointEnd);
-		public abstract void DrawText(GridCoord point, int size, string text);			
+		public abstract void DrawText(GridCoord point, int size, string text, System.Drawing.Color color);			
 		public abstract void DrawSplash();
 		public abstract void ClearSplash();
 	}

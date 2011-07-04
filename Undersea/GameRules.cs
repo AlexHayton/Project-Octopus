@@ -51,6 +51,8 @@ namespace Undersea
 					actor.Process(gameTimePassed);
 				}
 			}
+			
+			m_lastTick = currentTime;
 		}
 		
 		public abstract void StartGame();

@@ -12,7 +12,7 @@ namespace Undersea
 		
 		public override void Draw()
 		{
-			MainWindow.GetRenderer().DrawText(new GridCoord(m_gridPosX + .4f, m_gridPosY + .4f), 8, "Hatch");
+			MainWindow.GetRenderer().DrawText(new GridCoord(m_gridPosX + .4f, m_gridPosY + .4f), 8, "Hatch", System.Drawing.Color.White);
 		}
 		
 		public override void Process(int milliseconds)
