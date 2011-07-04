@@ -11,7 +11,12 @@ public partial class MainWindow : Gtk.Window
 		Build ();
 		InitSDL();
 		InitGame();
-		MainLoop();
+		
+		while (GameRules.GetGameRules().CheckGameEnded())
+		{
+			MainLoop();
+			
+		}
 	}
 	
 	public static Undersea.Renderer GetRenderer()

@@ -10,6 +10,7 @@ namespace Undersea
 			m_gameStart = DateTime.Now;
 			m_lastTick = DateTime.Now;
 			m_grid = new Grid(gridSizeX, gridSizeY);
+			m_actors = new List<Actor>();
 		}
 		
 		private static GameRules m_currentGameRules;

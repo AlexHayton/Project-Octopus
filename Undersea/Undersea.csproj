@@ -84,27 +84,27 @@
     <Compile Include="Main.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Grid.cs" />
-    <Compile Include="Tile.cs" />
     <Compile Include="GameObject.cs" />
-    <Compile Include="TileRock.cs" />
     <Compile Include="Renderer.cs" />
     <Compile Include="Renderer2D.cs" />
     <Compile Include="GridCoord.cs" />
     <Compile Include="WindowCoord.cs" />
-    <Compile Include="Actor.cs" />
-    <Compile Include="Octopus.cs" />
     <Compile Include="Log.cs" />
-    <Compile Include="TileSand.cs" />
-    <Compile Include="TileSeaweed.cs" />
-    <Compile Include="TileHatchery.cs" />
-    <Compile Include="TileSteamvent.cs" />
-    <Compile Include="Crab.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="GridObject.cs" />
     <Compile Include="GameRules.cs" />
     <Compile Include="DamageType.cs" />
     <Compile Include="RenderObject.cs" />
     <Compile Include="GameRulesStandard.cs" />
+    <Compile Include="Actors\Crab.cs" />
+    <Compile Include="Actors\Octopus.cs" />
+    <Compile Include="Tiles\Tile.cs" />
+    <Compile Include="Tiles\TileHatchery.cs" />
+    <Compile Include="Tiles\TileRock.cs" />
+    <Compile Include="Tiles\TileSand.cs" />
+    <Compile Include="Tiles\TileSeaweed.cs" />
+    <Compile Include="Tiles\TileSteamvent.cs" />
+    <Compile Include="Actors\Actor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.desktop" />
@@ -113,5 +113,13 @@
   <ItemGroup>
     <Folder Include="Actors\" />
     <Folder Include="Actors\" />
+    <Folder Include="Tiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\Octo-Image.jpg" />
+    <None Include="images\Seaweed.jpg" />
+    <None Include="images\Seaweed.png" />
+    <None Include="images\TileLava.jpg" />
+    <None Include="images\TileSand.jpg" />
   </ItemGroup>
 </Project>
