@@ -9,6 +9,10 @@ namespace Undersea
 		
 		public override void StartGame()
 		{
+			Renderer.GetRenderer().AddRenderObject(m_grid);
+			
+			Octopus octopus = new Octopus();
+			octopus.SetGridPosition(new GridCoord(10,10));
 		}
 		
 		public override bool CheckGameEnded()

@@ -35,6 +35,12 @@ namespace Undersea
 		{
 			return new GridCoord(m_gridPosX, m_gridPosY);
 		}
+		
+		public void SetGridPosition(GridCoord coord)
+		{
+			m_gridPosX = coord.X;
+			m_gridPosY = coord.Y;
+		}
 	}
 }
 

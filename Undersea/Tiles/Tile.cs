@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 using Gtk;
 using System.Collections.Generic;
 using System.Reflection;
@@ -47,6 +48,12 @@ namespace Undersea
 		{
 			return new GridCoord(m_gridPosX, m_gridPosY);
 		}
+		
+		public void SetGridPosition(GridCoord coord)
+		{
+			m_gridPosX = (int)Math.Floor(coord.X);
+			m_gridPosY = (int)Math.Floor(coord.Y);
+		}
 
 		public float GetHealth() {
 			return this.m_currentHealth;
@@ -84,16 +91,16 @@ namespace Undersea
 		
 		public void DrawBorder()
 		{
-			Renderer renderer = MainWindow.GetRenderer();
+			Renderer renderer = Renderer.GetRenderer();
 			
 			GridCoord topLeft = new GridCoord(m_gridPosX, m_gridPosY);
 			GridCoord bottomLeft = new GridCoord(m_gridPosX, m_gridPosY+1);
 			GridCoord bottomRight = new GridCoord(m_gridPosX+1, m_gridPosY+1);
 			GridCoord topRight = new GridCoord(m_gridPosX, m_gridPosY+1);
-			renderer.DrawLine(topLeft, topRight);
-			renderer.DrawLine(topRight, bottomRight);
-			renderer.DrawLine(bottomRight, bottomLeft);
-			renderer.DrawLine(bottomLeft, topLeft);
+			renderer.DrawLine(topLeft, topRight, Color.White);
+			renderer.DrawLine(topRight, bottomRight, Color.White);
+			renderer.DrawLine(bottomRight, bottomLeft, Color.White);
+			renderer.DrawLine(bottomLeft, topLeft, Color.White);
 		}
 	}
 }

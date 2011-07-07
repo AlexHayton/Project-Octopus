@@ -58,9 +58,15 @@ namespace Undersea
 			}
 		}
 
-		public virtual GridCoord GetGridPosition()
+		public GridCoord GetGridPosition()
 		{
 			return new GridCoord(m_gridPosX, m_gridPosY);
+		}
+		
+		public void SetGridPosition(GridCoord coord)
+		{
+			m_gridPosX = coord.X;
+			m_gridPosY = coord.Y;
 		}
 		
 		public virtual void TakeDamage(float damage, DamageType type)

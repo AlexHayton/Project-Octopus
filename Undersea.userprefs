@@ -1,30 +1,22 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" ctype="Workspace" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Undersea/Renderer2D.cs" ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Undersea/MainWindow.cs" ctype="Workbench">
     <Files>
       <File FileName="Undersea/GridCoord.cs" Line="7" Column="11" />
-      <File FileName="Undersea/Crab.cs" Line="4" Column="65" />
-      <File FileName="Undersea/Actor.cs" Line="4" Column="68" />
-      <File FileName="Undersea/Octopus.cs" Line="8" Column="17" />
       <File FileName="Undersea/GameObject.cs" Line="9" Column="50" />
-      <File FileName="Undersea/Tile.cs" Line="8" Column="45" />
       <File FileName="Undersea/Camera.cs" Line="23" Column="4" />
       <File FileName="Undersea/GridObject.cs" Line="6" Column="31" />
-      <File FileName="Undersea/GameRules.cs" Line="43" Column="38" />
-      <File FileName="Undersea/Grid.cs" Line="102" Column="5" />
+      <File FileName="Undersea/GameRules.cs" Line="31" Column="26" />
+      <File FileName="Undersea/Grid.cs" Line="59" Column="39" />
       <File FileName="Undersea/app.desktop" />
       <File FileName="Undersea/DamageType.cs" Line="8" Column="7" />
-      <File FileName="Undersea/TileSeaweed.cs" Line="4" Column="71" />
-      <File FileName="Undersea/TileRock.cs" Line="4" Column="68" />
-      <File FileName="Undersea/MainWindow.cs" Line="28" Column="67" />
-      <File FileName="Undersea/Renderer2D.cs" Line="31" Column="106" />
-      <File FileName="Undersea/Renderer.cs" Line="74" Column="4" />
+      <File FileName="Undersea/MainWindow.cs" Line="15" Column="26" />
+      <File FileName="Undersea/Renderer2D.cs" Line="9" Column="33" />
+      <File FileName="Undersea/Renderer.cs" Line="80" Column="19" />
       <File FileName="Undersea/Main.cs" Line="13" Column="23" />
       <File FileName="Undersea/RenderObject.cs" Line="6" Column="15" />
-      <File FileName="Undersea/TileHatchery.cs" Line="4" Column="36" />
-      <File FileName="Undersea/TileSand.cs" Line="4" Column="68" />
-      <File FileName="Undersea/TileSteamvent.cs" Line="4" Column="73" />
       <File FileName="Undersea/WindowCoord.cs" Line="7" Column="10" />
+      <File FileName="Undersea/GameRulesStandard.cs" Line="22" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

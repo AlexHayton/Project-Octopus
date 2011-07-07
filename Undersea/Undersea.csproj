@@ -105,6 +105,7 @@
     <Compile Include="Tiles\TileSeaweed.cs" />
     <Compile Include="Tiles\TileSteamvent.cs" />
     <Compile Include="Actors\Actor.cs" />
+    <Compile Include="Exceptions\RenderException.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.desktop" />
@@ -114,6 +115,7 @@
     <Folder Include="Actors\" />
     <Folder Include="Actors\" />
     <Folder Include="Tiles\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="images\Octo-Image.jpg" />

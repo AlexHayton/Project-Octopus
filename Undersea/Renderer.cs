@@ -9,10 +9,12 @@ namespace Undersea
 		{
 		}
 		
+		protected Grid m_grid;
 		protected int m_windowSizeX;
 		protected int m_windowSizeY;
 		protected int m_gridSizeX;
 		protected int m_gridSizeY;
+		protected DateTime m_lastFrame;
 		protected List<RenderObject> m_renderObjects = new List<RenderObject>();
 		
 		public enum Axis
@@ -22,42 +24,30 @@ namespace Undersea
 			Z
 		}
 		
-		public float GridToWindowCoords(float gridCoord, Axis axis)
+		public WindowCoord GridToWindowCoords(GridCoord gridCoord)
 		{
-			float windowSize, gridSize;
-			switch (axis)
-			{
-			case Axis.X:
-				windowSize = m_windowSizeX;
-				gridSize = m_gridSizeX;
-				break;
-			default:
-				windowSize = m_windowSizeY;
-				gridSize = m_gridSizeY;
-				break;
-			}
-			return gridCoord * (gridSize / windowSize);
-		}	
+			float windowCoordX = gridCoord.X * (m_windowSizeX / m_gridSizeX);
+			float windowCoordY = gridCoord.Y * (m_windowSizeY / m_gridSizeY);
+			return new WindowCoord(windowCoordX, windowCoordY);
+		}
 		
-		public float WindowToGridCoords(float windowCoord, Axis axis)
+		public GridCoord WindowToGridCoords(WindowCoord windowCoord)
 		{
-			float windowSize, gridSize;
-			switch (axis)
-			{
-			case Axis.X:
-				windowSize = m_windowSizeX;
-				gridSize = m_gridSizeX;
-				break;
-			default:
-				windowSize = m_windowSizeY;
-				gridSize = m_gridSizeY;
-				break;
-			}
-			return windowCoord * (windowSize / gridSize);
+			float gridCoordX = windowCoord.X * (m_gridSizeX / m_windowSizeX);
+			float gridCoordY = windowCoord.Y * (m_gridSizeY / m_windowSizeY);
+			return new GridCoord(gridCoordX, gridCoordY);
 		}
 		
 		public void AddRenderObject(RenderObject newobject)
 		{
+			// Store the grid if one is added.
+			if (newobject is Grid)
+			{
+				m_grid = (Grid)newobject;
+				m_gridSizeX = m_grid.SizeX;
+				m_gridSizeY = m_grid.SizeY;
+			}
+			
 			if (m_renderObjects.Contains(newobject))
 			{
 			    // Do nothing
@@ -79,12 +69,34 @@ namespace Undersea
 			{
 				target.Draw();
 			}
+			
+			EndRender();
+			m_lastFrame = DateTime.Now;
 		}
 		
-		public abstract void DrawLine(GridCoord pointStart, GridCoord pointEnd);
-		public abstract void DrawText(GridCoord point, int size, string text, System.Drawing.Color color);			
+		public DateTime LastFrame {
+			get {
+				return this.m_lastFrame;
+			}
+		}
+
+		public Grid Grid {
+			get {
+				return this.m_grid;
+			}
+		}
+
+		public abstract void DrawLine(GridCoord pointStart, GridCoord pointEnd, System.Drawing.Color colour);
+		public abstract void DrawText(GridCoord point, int size, string text, System.Drawing.Color colour);			
 		public abstract void DrawSplash();
 		public abstract void ClearSplash();
+		protected abstract void BeginRender();
+		protected abstract void EndRender();
+		
+		public static Renderer GetRenderer()
+		{
+			return MainWindow.GetRenderer();
+		}
 	}
 }
 

@@ -1,22 +1,26 @@
 using System;
 using System.Collections;
+using System.Threading;
 using Gtk;
 using Undersea;
 using Tao.Sdl;
 
 public partial class MainWindow : Gtk.Window
 {
+	private static int s_maxFPS = 30;
+	
 	public MainWindow () : base(Gtk.WindowType.Toplevel)
 	{
 		Build ();
 		InitSDL();
 		InitGame();
 		
-		while (GameRules.GetGameRules().CheckGameEnded())
+		while (!GameRules.GetGameRules().CheckGameEnded())
 		{
 			MainLoop();
-			
 		}
+		
+		// Declare a winner.
 	}
 	
 	public static Undersea.Renderer GetRenderer()
@@ -28,12 +32,8 @@ public partial class MainWindow : Gtk.Window
 
 	public void InitSDL() 
 	{
-		// Initialise Sdl.
-		Sdl.SDL_Init(Sdl.SDL_INIT_VIDEO);
-		Sdl.SDL_SetVideoMode(640, 480, 16, Sdl.SDL_DOUBLEBUF|Sdl.SDL_ANYFORMAT);
+		s_renderer = new Renderer2D(640,480);
 		Sdl.SDL_WM_SetCaption("Octopus Castle View", "");
-		
-		s_renderer = new Renderer2D(Sdl.SDL_GetVideoSurface());
 	}
 	
 	private void InitGame()
@@ -46,6 +46,24 @@ public partial class MainWindow : Gtk.Window
 	{
 		GameRules.GetGameRules().Process();
 		GetRenderer().Render();
+		Snooze();
+	}
+	
+	private void MenuLoop()
+	{
+		GetRenderer().Render();
+		Snooze();
+	}
+	
+	private void Snooze()
+	{
+		// Limit the framerate by snoozing every frame. Could possibly delegate this to SdlGfx.
+		long ticksPerFrame = TimeSpan.TicksPerSecond / s_maxFPS;
+		long ticksThisFrame = DateTime.Now.Ticks - GetRenderer().LastFrame.Ticks;
+		if (ticksThisFrame < ticksPerFrame) 
+		{
+			Thread.Sleep((int)((ticksPerFrame - ticksThisFrame) / TimeSpan.TicksPerMillisecond));
+		}
 	}
 
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)

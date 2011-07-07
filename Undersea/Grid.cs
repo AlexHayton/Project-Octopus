@@ -50,8 +50,7 @@ namespace Undersea
 			GridCoord gridcoord = new GridCoord(0,0);
 			
 			// Enumerate the tile type array.
-			Type tiletype = Tile.TileType.Max.GetType();
-			Tile.TileType[] typearray = (Tile.TileType[])Enum.GetValues(tiletype);
+			Tile.TileType[] typearray = (Tile.TileType[])Enum.GetValues(typeof(Tile.TileType));
 			List<Tile.TileType> typelist = new List<Tile.TileType>(typearray);
 			typelist.Remove(Tile.TileType.Max);
 			typelist.Remove(Tile.TileType.OctopusGarden);
