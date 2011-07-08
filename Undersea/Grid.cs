@@ -57,8 +57,8 @@ namespace Undersea
 			
 			for (int i = 0; i<(m_sizeX*m_sizeY);i++)
 			{
-				gridcoord.X = (float)Math.Floor((float)i / (float)m_sizeY);
-				gridcoord.Y = i%m_sizeY;
+				gridcoord.X = i%m_sizeY;
+				gridcoord.Y = (float)Math.Floor((float)i / (float)m_sizeY);
 				Tile.TileType type = Tile.TileType.Rock;
 				
 				// Edge tiles are always rock.
@@ -89,6 +89,7 @@ namespace Undersea
 				}
 				
 				// Set the tile in the grid.
+				tile.SetGridPosition(gridcoord);
 				m_tiles[i] = tile;
 			}
 		}

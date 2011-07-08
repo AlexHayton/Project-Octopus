@@ -10,6 +10,7 @@ namespace Undersea
 		}
 		
 		protected Grid m_grid;
+		protected Camera m_camera = new Camera();
 		protected int m_windowSizeX;
 		protected int m_windowSizeY;
 		protected int m_gridSizeX;
