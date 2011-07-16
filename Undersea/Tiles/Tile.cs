@@ -16,7 +16,7 @@ namespace Undersea
 		protected float m_currentHealth = 0;
 		protected int m_maxHealth = 0;
 		protected string m_texture = "";
-		protected TileType m_tileType = TileType.Rock;
+		protected TileType m_tileType = TileType.Bedrock;
 		
 		public enum TileType
 		{
@@ -99,7 +99,7 @@ namespace Undersea
 			}
 			else
 			{
-				MainWindow.GetRenderer().DrawImage(new GridCoord(m_gridPosX, m_gridPosY), "images/TileSand.jpg", 1, 1);
+				MainWindow.GetRenderer().DrawImage(new GridCoord(m_gridPosX, m_gridPosY), m_texture, 1, 1);
 			}
 			
 			DrawBorder();

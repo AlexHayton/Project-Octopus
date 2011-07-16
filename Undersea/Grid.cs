@@ -59,9 +59,9 @@ namespace Undersea
 			{
 				gridcoord.X = i%m_sizeY;
 				gridcoord.Y = (float)Math.Floor((float)i / (float)m_sizeY);
-				Tile.TileType type = Tile.TileType.Rock;
+				Tile.TileType type = Tile.TileType.Bedrock;
 				
-				// Edge tiles are always rock.
+				// Edge tiles are always bedrock.
 				if (this.IsEdgeTile(gridcoord))
 				{
 					type = Tile.TileType.Bedrock;
@@ -83,6 +83,10 @@ namespace Undersea
 					
 					case Tile.TileType.Rock:	
 						tile = new TileRock();
+						break;
+					
+					case Tile.TileType.Seaweed:
+						tile = new TileSeaweed();
 						break;
 					
 					case Tile.TileType.Sand:

@@ -1,45 +1,43 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" ctype="Workspace" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Undersea/Actors/Octopus.cs" ctype="Workbench">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Undersea/Renderer2D.cs" ctype="Workbench">
     <Files>
       <File FileName="Undersea/GridCoord.cs" Line="31" Column="1" />
       <File FileName="Undersea/GameObject.cs" Line="9" Column="50" />
       <File FileName="Undersea/Camera.cs" Line="71" Column="17" />
       <File FileName="Undersea/GridObject.cs" Line="6" Column="31" />
       <File FileName="Undersea/GameRules.cs" Line="39" Column="100" />
-      <File FileName="Undersea/Grid.cs" Line="75" Column="5" />
+      <File FileName="Undersea/Grid.cs" Line="62" Column="44" />
       <File FileName="Undersea/app.desktop" />
       <File FileName="Undersea/DamageType.cs" Line="8" Column="7" />
       <File FileName="Undersea/MainWindow.cs" Line="153" Column="3" />
-      <File FileName="Undersea/Renderer2D.cs" Line="11" Column="31" />
+      <File FileName="Undersea/Renderer2D.cs" Line="177" Column="1" />
       <File FileName="Undersea/Renderer.cs" Line="53" Column="52" />
       <File FileName="Undersea/Main.cs" Line="10" Column="1" />
       <File FileName="Undersea/RenderObject.cs" Line="6" Column="15" />
       <File FileName="Undersea/WindowCoord.cs" Line="31" Column="1" />
       <File FileName="Undersea/GameRulesStandard.cs" Line="16" Column="1" />
-      <File FileName="Undersea/Tiles/Tile.cs" Line="23" Column="12" />
+      <File FileName="Undersea/Tiles/Tile.cs" Line="102" Column="88" />
       <File FileName="Undersea/Tiles/TileRock.cs" Line="33" Column="1" />
       <File FileName="Undersea/Tiles/TileHatchery.cs" Line="11" Column="4" />
       <File FileName="Undersea/KeyHandler.cs" Line="33" Column="1" />
       <File FileName="Undersea/KeyAction.cs" Line="31" Column="3" />
       <File FileName="Undersea/Log.cs" Line="19" Column="21" />
-      <File FileName="Assembly Browser" />
       <File FileName="Undersea/Tiles/TileSand.cs" Line="11" Column="38" />
-      <File FileName="Undersea/Tiles/TileSeaweed.cs" Line="10" Column="34" />
+      <File FileName="Undersea/Tiles/TileSeaweed.cs" Line="7" Column="4" />
       <File FileName="Undersea/Tiles/TileSteamvent.cs" Line="11" Column="4" />
       <File FileName="Undersea/Tiles/TileBedrock.cs" Line="6" Column="18" />
       <File FileName="Undersea/Actors/Actor.cs" Line="1" Column="1" />
-      <File FileName="Undersea/Actors/Octopus.cs" Line="16" Column="60" />
+      <File FileName="Undersea/Actors/Octopus.cs" Line="10" Column="27" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Undersea" expanded="True">
             <Node name="Actors" expanded="True" />
-            <Node name="images" expanded="True">
-              <Node name="Seaweed.png" selected="True" />
-            </Node>
+            <Node name="images" expanded="True" />
             <Node name="Tiles" expanded="True" />
+            <Node name="Renderer2D.cs" selected="True" />
           </Node>
         </State>
       </Pad>

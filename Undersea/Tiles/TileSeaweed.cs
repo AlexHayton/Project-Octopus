@@ -8,6 +8,7 @@ namespace Undersea
 			m_passable = true;
 			m_currentHealth = 0;
 			m_tileType = TileType.Seaweed;
+			m_texture = "images/Seaweed.png";
 		}
 		
 		public override void Process(int milliseconds)
