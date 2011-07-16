@@ -30,12 +30,13 @@ namespace Undersea
 		protected DateTime m_lastTick;
 		protected bool m_gameRunning;
 		protected Grid m_grid;
+		protected KeyHandler m_keyHandler;
 		protected List<Actor> m_actors;
 		
 		public virtual void Process()
 		{
 			DateTime currentTime = DateTime.Now;
-			int gameTimePassed = (int)((currentTime.Ticks - m_lastTick.Ticks) / 10);
+			int gameTimePassed = (int)((currentTime.Ticks - m_lastTick.Ticks) / TimeSpan.TicksPerMillisecond);
 			
 			if (CheckGameEnded()) 
 			{
@@ -46,6 +47,7 @@ namespace Undersea
 			}
 			else
 			{
+				m_keyHandler.Process(gameTimePassed);
 				m_grid.Process(gameTimePassed);
 				foreach (Actor actor in m_actors)
 				{
@@ -56,6 +58,15 @@ namespace Undersea
 			m_lastTick = currentTime;
 		}
 		
+		public KeyHandler KeyHandler {
+			get {
+				return this.m_keyHandler;
+			}
+			set {
+				m_keyHandler = value;
+			}
+		}
+
 		public abstract void StartGame();
 		public abstract bool CheckGameEnded();
 		public abstract int GetWinner();

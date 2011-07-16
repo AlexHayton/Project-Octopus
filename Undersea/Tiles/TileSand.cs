@@ -8,11 +8,7 @@ namespace Undersea
 			m_passable = true;
 			m_currentHealth = 0;
 			m_tileType = TileType.Sand;
-		}
-		
-		public override void Draw()
-		{
-			MainWindow.GetRenderer().DrawText(new GridCoord(m_gridPosX + .4f, m_gridPosY + .4f), 8, "Sand", System.Drawing.Color.White);
+			m_texture = "images/TileSand.jpg";
 		}
 		
 		public override void Process(int milliseconds)

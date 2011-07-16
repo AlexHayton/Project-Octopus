@@ -15,10 +15,12 @@ namespace Undersea
 		protected bool m_wet = false;
 		protected float m_currentHealth = 0;
 		protected int m_maxHealth = 0;
+		protected string m_texture = "";
 		protected TileType m_tileType = TileType.Rock;
 		
 		public enum TileType
 		{
+			Bedrock,
 			OctopusGarden,
 			Sand,
 			Rock,
@@ -86,8 +88,22 @@ namespace Undersea
 			// Please override!
 		}
 
-		public abstract void Draw();
 		public abstract void Process(int milliseconds);
+		
+		public virtual void Draw()
+		{
+			// Fall back to text rendering if the textures are missing!
+			if (m_texture == "")
+			{
+				MainWindow.GetRenderer().DrawText(new GridCoord(m_gridPosX + .1f, m_gridPosY + .1f), 6, m_tileType.ToString(), System.Drawing.Color.White);
+			}
+			else
+			{
+				MainWindow.GetRenderer().DrawImage(new GridCoord(m_gridPosX, m_gridPosY), "images/TileSand.jpg", 1, 1);
+			}
+			
+			DrawBorder();
+		}
 		
 		public void DrawBorder()
 		{

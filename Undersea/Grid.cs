@@ -64,7 +64,7 @@ namespace Undersea
 				// Edge tiles are always rock.
 				if (this.IsEdgeTile(gridcoord))
 				{
-					type = Tile.TileType.Rock;
+					type = Tile.TileType.Bedrock;
 				}
 				else
 				{
@@ -77,6 +77,10 @@ namespace Undersea
 				Tile tile;
 				switch(type)
 				{	
+					case Tile.TileType.Bedrock:
+						tile = new TileBedrock();
+						break;
+					
 					case Tile.TileType.Rock:	
 						tile = new TileRock();
 						break;

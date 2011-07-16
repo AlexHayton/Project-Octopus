@@ -7,7 +7,8 @@ using Tao.Sdl;
 public class MainWindow
 {
 	private static int s_maxFPS = 30;
-	SdlGfx.FPSmanager fpsManager = new SdlGfx.FPSmanager();
+	private SdlGfx.FPSmanager m_fpsManager = new SdlGfx.FPSmanager();
+	private KeyHandler m_keyHandler = new KeyHandler();
 	private bool m_quit = false;
 	
 	public MainWindow ()
@@ -48,7 +49,7 @@ public class MainWindow
 	
 	private unsafe void InitFPSManager()
 	{
-		fixed(SdlGfx.FPSmanager* man = &fpsManager)
+		fixed(SdlGfx.FPSmanager* man = &m_fpsManager)
 		{
 			// Framerate management.
 			SdlGfx.SDL_initFramerate((IntPtr)man);
@@ -60,6 +61,7 @@ public class MainWindow
 	{
 		GameRules rules = new GameRulesStandard(100, 100);
 		GameRules.StartNewGame(rules);
+		rules.KeyHandler = SetupKeyHandler();
 	}
 	
 	private void MainLoop()
@@ -85,10 +87,66 @@ public class MainWindow
 		{
 			Thread.Sleep((int)((ticksPerFrame - ticksThisFrame) / TimeSpan.TicksPerMillisecond));
 		}*/
-		fixed (SdlGfx.FPSmanager* man = &fpsManager)
+		fixed (SdlGfx.FPSmanager* man = &m_fpsManager)
 		{
 		SdlGfx.SDL_framerateDelay((IntPtr)man);
 		}
+	}
+	
+	private KeyHandler SetupKeyHandler()
+	{ 
+		// Reinstantiate the handler.
+		m_keyHandler = new KeyHandler();
+		
+		// Start at the end
+		KeyAction quit = new KeyAction(this.Quit, null, null);
+		m_keyHandler.AddAction("q", quit);
+		
+		// Scrolling
+		KeyAction scrollup = new KeyAction(null, null, GetRenderer().Camera.ScrollUp);
+		m_keyHandler.AddAction("uparrow", scrollup);
+		KeyAction scrolldown = new KeyAction(null, null, GetRenderer().Camera.ScrollDown);
+		m_keyHandler.AddAction("downarrow", scrolldown);
+		KeyAction scrollleft = new KeyAction(null, null, GetRenderer().Camera.ScrollLeft);
+		m_keyHandler.AddAction("leftarrow", scrollleft);
+		KeyAction scrollright = new KeyAction(null, null, GetRenderer().Camera.ScrollRight);
+		m_keyHandler.AddAction("rightarrow", scrollright);
+		
+		return m_keyHandler;
+	}
+		                               
+	public void Quit()
+	{
+		m_quit = true;
+	}
+	
+	private string ConvertKeystroke(int keynum)
+	{
+		string keystring = "";
+		switch (keynum)
+		{
+			case 273:
+				keystring = "uparrow";
+				break;
+			
+			case 274:
+				keystring = "downarrow";
+				break;
+			
+			case 276:
+				keystring = "leftarrow";
+				break;
+			
+			case 275:
+				keystring = "rightarrow";
+				break;
+			
+			default:
+				keystring = Convert.ToChar(keynum).ToString();
+				break;
+		}
+		
+		return keystring;
 	}
 	
 	private void HandleKeys()
@@ -99,12 +157,15 @@ public class MainWindow
 			switch (thisevent.type)
 			{
 				case Sdl.SDL_KEYDOWN:
-					if (thisevent.key.keysym.sym == Convert.ToInt32('q'))
-						m_quit = true;
+					m_keyHandler.KeyDown(ConvertKeystroke(thisevent.key.keysym.sym));
+					break;
+				
+				case Sdl.SDL_KEYUP:
+					m_keyHandler.KeyUp(ConvertKeystroke(thisevent.key.keysym.sym));
 					break;
 				    
 				case Sdl.SDL_QUIT:
-					m_quit = true;
+					this.Quit();
 					break;
 			}
 		}

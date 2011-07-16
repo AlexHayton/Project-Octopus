@@ -91,6 +91,9 @@
     <Compile Include="Tiles\TileSteamvent.cs" />
     <Compile Include="Actors\Actor.cs" />
     <Compile Include="Exceptions\RenderException.cs" />
+    <Compile Include="KeyHandler.cs" />
+    <Compile Include="KeyAction.cs" />
+    <Compile Include="Tiles\TileBedrock.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.desktop" />
